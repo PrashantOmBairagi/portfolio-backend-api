@@ -24,7 +24,7 @@ public class Contact {
     @Getter @Setter
     //@NotBlank(message = "Phone number is required")
     @Pattern(
-            regexp = "^[0-9]{10}$",
+            regexp = "^\\s*$|^[0-9]{10}$",
             message = "Phone number must be exactly 10 digits"
     )
     private String phone;
