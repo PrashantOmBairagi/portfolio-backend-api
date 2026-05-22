@@ -14,15 +14,18 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    static final String MSG = "message";
+    static final String STATUS = "status";
+    static final String TIMESTAMP = "timestamp";
 
     // ✅ Returns 404 NOT FOUND when a requested resource (e.g., entity by ID) cannot be located (custom exception)
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleResourceNotFound(
             ResourceNotFoundException ex) {
         Map<String, Object> error = new HashMap<>();
-        error.put("status", 404);
-        error.put("message", ex.getMessage());
-        error.put("timestamp", LocalDateTime.now());
+        error.put(STATUS, 404);
+        error.put(MSG, ex.getMessage());
+        error.put(TIMESTAMP, LocalDateTime.now());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
@@ -31,9 +34,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleTypeMismatch(
             MethodArgumentTypeMismatchException ex) {
         Map<String, Object> error = new HashMap<>();
-        error.put("status", 400);
-        error.put("message", "Invalid ID format: must be a number");
-        error.put("timestamp", LocalDateTime.now());
+        error.put(STATUS, 400);
+        error.put(MSG, "Invalid ID format: must be a number");
+        error.put(TIMESTAMP, LocalDateTime.now());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -42,9 +45,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleIllegalArgument(
             IllegalArgumentException ex) {
         Map<String, Object> error = new HashMap<>();
-        error.put("status", 400);
-        error.put("message", ex.getMessage());
-        error.put("timestamp", LocalDateTime.now());
+        error.put(STATUS, 400);
+        error.put(MSG, ex.getMessage());
+        error.put(TIMESTAMP, LocalDateTime.now());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler(
