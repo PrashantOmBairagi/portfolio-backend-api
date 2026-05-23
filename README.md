@@ -1,74 +1,73 @@
-# Portfolio Backend API
+# Portfolio Contact API
 
-A lightweight **Spring Boot REST API** powering the contact section of my personal portfolio website.
+Cloud-deployed backend system built using **Java**, **Spring Boot**, and **PostgreSQL** to handle contact form submissions from a live portfolio website.
 
-This project started as a way to learn how real backend systems work beyond localhost — APIs, databases, cloud deployment, environment variables, validation, and frontend integration.
+The API enables contact form handling, persistent database storage, and seamless frontend-backend communication through a cloud-hosted architecture.
 
-Someone can visit my portfolio, submit the contact form, and the message travels through a real backend pipeline into a PostgreSQL database.
-
----
-## Live Demo
-
-🌐 Portfolio Website:  
+🌐 **Live Portfolio:**  
 https://prashant-bairagi-portfolio.vercel.app/
-
-## Live Architecture
-
-```txt
-Frontend (Vercel)
-        ↓ HTTPS Request
-Spring Boot REST API (Render)
-        ↓
-Neon PostgreSQL Database
-```
-
----
-
-## Features
-
-* REST API for portfolio contact form
-* Contact form data persistence using PostgreSQL
-* Backend validation for form fields
-* Global exception handling
-* Environment variable configuration
-* Cloud deployment on Render
-* Neon PostgreSQL integration
-* CORS configured for portfolio frontend
-* Production-ready API structure
 
 ---
 
 ## Tech Stack
 
 ### Backend
-
-* Java
-* Spring Boot
-* Spring Data JPA
-* Hibernate
+- Java
+- Spring Boot
+- REST APIs
 
 ### Database
+- Neon PostgreSQL
 
-* PostgreSQL (Neon)
+### Cloud & Deployment
+- Render (Backend Hosting)
+- Neon PostgreSQL (Cloud Database)
+- Vercel (Frontend Hosting)
 
-### Deployment
-
-* Render
-* Docker
-
-### Testing
-
-* Postman
+### Tools
+- Maven
+- Postman
+- Git & GitHub
+- IntelliJ IDEA
 
 ---
 
-## API Endpoints
+## Features
+
+- Contact form submission handling
+- Persistent database storage
+- REST API endpoints
+- Frontend-backend integration
+- Cloud deployment
+- End-to-end API testing using Postman
+
+---
+
+## System Architecture
+
+```text
+Portfolio Website (Vercel)
+            ↓
+Spring Boot REST API (Render)
+            ↓
+Neon PostgreSQL Database
+```
+
+This architecture demonstrates frontend-backend communication with cloud-hosted database persistence.
+
+---
+
+## REST API Design
+
+The backend follows RESTful API principles for handling portfolio contact form submissions and contact data management.
 
 ### Submit Contact Form
 
 ```http
 POST /api/contacts
 ```
+
+Handles contact form submissions from the live portfolio website and stores data in PostgreSQL.
 
 #### Request Body
 
@@ -89,6 +88,10 @@ POST /api/contacts
 GET /api/contacts
 ```
 
+Retrieves all submitted contact entries.
+
+> Note: This endpoint exists for backend testing and development purposes and is not publicly exposed in the deployed application.
+
 ---
 
 ### Get Contact By ID
@@ -96,6 +99,10 @@ GET /api/contacts
 ```http
 GET /api/contacts/{id}
 ```
+
+Retrieves a specific contact entry using its unique ID.
+
+> Note: Currently restricted from public usage in production deployment.
 
 ---
 
@@ -105,92 +112,78 @@ GET /api/contacts/{id}
 DELETE /api/contacts/{id}
 ```
 
----
+Deletes a specific contact entry by ID.
 
-## Validation Rules
-
-The API validates incoming requests before saving data.
-
-### Name
-
-* Required
-* Minimum 2 characters
-
-### Phone
-
-* Required
-* Must contain exactly 10 digits
-
-### Email
-
-* Required
-* Valid email format
-
-### Message
-
-* Required
-* Minimum 5 characters
+> Note: Used for backend management/testing and not publicly accessible in the deployed version.
 
 ---
 
-## Environment Variables
+The project demonstrates practical REST API development involving request handling, database persistence, and endpoint design using Spring Boot.
 
-Sensitive configuration is stored using environment variables.
+---
+
+## API Workflow
+
+1. User submits contact form on portfolio website
+2. Request sent to Spring Boot REST API
+3. Backend validates and processes request
+4. Data stored in PostgreSQL database
+5. Response returned to frontend
+
+---
+
+## Environment Configuration
+
+Sensitive credentials are managed using **environment variables** instead of hardcoding secrets.
 
 Example:
 
 ```env
-MDB_URL=your_database_url
-MDB_USERNAME=your_username
-MDB_PASSWORD=your_password
+MDB_URL=
+MDB_USERNAME=
+MDB_PASSWORD=
 ```
+
+This improves deployment flexibility and keeps credentials secure across environments.
 
 ---
 
-## Running Locally
+## API Testing
 
-Clone repository:
-
-```bash
-git clone https://github.com/PrashantOmBairagi/portfolio-backend-api.git
-```
-
-Navigate into project:
-
-```bash
-cd portfolio-backend-api
-```
-
-Set environment variables.
-
-Run:
-
-```bash
-mvn spring-boot:run
-```
+Endpoints were tested and validated using **Postman** to ensure proper request handling and backend reliability.
 
 ---
 
-## Portfolio Website
+## Project Status
 
-Frontend portfolio:
+✅ **Completed & Deployed**
 
-[Live Portfolio Website](https://prashant-bairagi-portfolio.vercel.app)
-
-Frontend repository:
-
-[Frontend-Web-Learning (Portfolio v2)](https://github.com/PrashantOmBairagi/Frontend-Web-Learning)
-
----
-
-## Why I Built This
-
-For a long time, backend development felt abstract to me — APIs, databases, HTTP requests, deployment, cloud hosting.
-
-This project was my way of moving beyond tutorials and building something real end-to-end.
-
-Still learning, but this project gave me confidence that I can actually build and deploy backend systems.
+Implemented:
+- REST API development
+- PostgreSQL database integration
+- Frontend-backend communication
+- Cloud deployment using Render + Neon + Vercel
+- Contact form handling
+- Environment variable configuration
 
 ---
 
-### Built with Java, Spring Boot & optimism.
+## Future Improvements
+
+Planned enhancements:
+
+- Email notification system
+- Rate limiting & spam protection
+- Better request validation
+- Admin dashboard for messages
+- Authentication for protected endpoints
+
+---
+
+## Author
+
+**Prashant Bairagi**
+
+🌐 Portfolio: https://prashant-bairagi-portfolio.vercel.app/  
+💻 GitHub: https://github.com/PrashantOmBairagi  
+💼 LinkedIn: https://linkedin.com/in/prashant-bairagi-kmlpr
