@@ -10,7 +10,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://prashant-bairagi-portfolio.vercel.app/")
+@CrossOrigin(origins = "https://prashant-bairagi-portfolio.vercel.app")
 public class ContactController {
 
 
