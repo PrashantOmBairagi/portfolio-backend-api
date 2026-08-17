@@ -1,17 +1,20 @@
 package com.portfolioprashant.contactapi.entity;
 
-import jakarta.persistence.*;
+// JPA/Hibernate imports commented out — DB disabled (cloud PostgreSQL expired).
+// Re-enable along with @Entity and related annotations when DB is restored.
+// import jakarta.persistence.*;
+// import org.hibernate.annotations.CreationTimestamp;
+// import java.time.LocalDateTime;
+
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import java.time.LocalDateTime;
 
-@Entity
+// @Entity  ← disabled; DB not active. Class retained as a validated POJO for email forwarding.
 public class Contact {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
 
@@ -40,9 +43,9 @@ public class Contact {
             message = "Message must be between 5 and 500 characters")
     private String message;
 
-
-    @CreationTimestamp
+    // @CreationTimestamp  ← disabled with JPA
     @Getter @Setter
-    private LocalDateTime timestamp;
+    private String timestamp;   // kept as String placeholder; re-type to LocalDateTime when DB is restored
 
 }
+
